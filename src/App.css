@@ -23,11 +23,11 @@ body{
   .flexParent{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: start;
   }
   .flex{
     border: 0.1vw solid black;
-    background-color: rgb(24, 53, 107);
+    background-color: #18356b;
     padding: 1vw;
     width: 20vw;
   }
@@ -36,4 +36,15 @@ body{
   width: 5vw;
   border-radius: 1vw;
   margin: 0.3vw;
+}
+.img{
+  width: 14vw;
+  height: 20vw;
+}
+
+.F{
+  background-color: #34135f;
+}
+.nat{
+  float: right;
 }
