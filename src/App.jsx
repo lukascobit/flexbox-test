@@ -1,47 +1,48 @@
 
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+  const [data, setData] = useState()
+  var [f, setF] = useState(true)
+  var srcImg = "https:picsum.photos\/200\/300"
+  
+  //https://reqres.in/api/users?page=2
+
+  useEffect(()=>{
+    async function getTodos(){
+        try {
+            const response = await fetch("https://reqres.in/api/users?page=2");
+            const jsonData = await response.json();
+            setData(jsonData);
+            console.log(data);
+            setF(false)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    if(f === true){
+      getTodos()
+    }
+},[data])
+
   return (
     <div className="App">
       <h1>test</h1>
       <div className="flexParent">
-        <div className="flex a">
-          <h1>A</h1>
-          <p>This is the body. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet illum libero quisquam maxime quo consequuntur explicabo nulla veniam distinctio, totam nostrum quasi quidem. Doloribus dolorum, sunt dolorem commodi quo recusandae.</p>
-        </div>
-        <div className="flex b">
-          <h1>B</h1>
-          <p>This is the body. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet illum libero quisquam maxime quo consequuntur explicabo nulla veniam distinctio, totam nostrum quasi quidem. Doloribus dolorum, sunt dolorem commodi quo recusandae.</p>
-        </div>
-        <div className="flex c">
-          <h1>C</h1>
-          <p>This is the body. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet illum libero quisquam maxime quo consequuntur explicabo nulla veniam distinctio, totam nostrum quasi quidem. Doloribus dolorum, sunt dolorem commodi quo recusandae.</p>
-        </div>
-        <div className="flex d ">
-          <h1>D</h1>
-          <p>This is the body. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet illum libero quisquam maxime quo consequuntur explicabo nulla veniam distinctio, totam nostrum quasi quidem. Doloribus dolorum, sunt dolorem commodi quo recusandae.</p>
-        </div>
-        <div className="flex e">
-          <h1>E</h1>
-          <p>This is the body. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet illum libero quisquam maxime quo consequuntur explicabo nulla veniam distinctio, totam nostrum quasi quidem. Doloribus dolorum, sunt dolorem commodi quo recusandae.</p>
-        </div>
-        <div className="flex e">
-          <h1>E</h1>
-          <p>This is the body. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet illum libero quisquam maxime quo consequuntur explicabo nulla veniam distinctio, totam nostrum quasi quidem. Doloribus dolorum, sunt dolorem commodi quo recusandae.</p>
-        </div>
-        
-      </div>
-      <div className="flexParent second">
-        <div className="flex a">
-          <h1>A</h1>
-          <p>This is the body. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet illum libero quisquam maxime quo consequuntur explicabo nulla veniam distinctio, totam nostrum quasi quidem. Doloribus dolorum, sunt dolorem commodi quo recusandae.</p>
-        </div>
-        <div className="flex b">
-          <h1>B</h1>
-          <p>This is the body. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet illum libero quisquam maxime quo consequuntur explicabo nulla veniam distinctio, totam nostrum quasi quidem. Doloribus dolorum, sunt dolorem commodi quo recusandae.</p>
-        </div>
-        
+
+      {data && data.data.map((d)=>{
+        srcImg = `https:picsum.photos/20${Math.round(Math.random()*10)}/30${Math.round(Math.random()*10)}`
+        return(
+          <div className="flex">
+            
+            <h1><img className="avatar" src={d.avatar} alt="avatar" />{d.first_name} {d.last_name}</h1>
+            <i>{d.email}</i>
+            <p>Look at my art: </p>
+            <img src={srcImg} alt="art" />
+          </div>
+        )
+      })}
         
       </div>
 

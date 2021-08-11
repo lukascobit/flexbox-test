@@ -1,32 +1,21 @@
 :root{
- --bg: rgb(22, 92, 172);
+ --bg: rgb(7, 39, 75);
 }
 body{
   background-color: var(--bg);
-  color: white;
+  color: rgb(197, 197, 197);
 }
-
 .flex{
   border: 0.1vw solid black;
-  background-color: cornflowerblue;
-  padding: 1vw;
-  width: 20vw;
+  background-color: rgb(24, 53, 107);
+  padding: 0.5vw;
+  flex: 1;
 }
+
 .a{
   flex: 2;
 }
-.b{
-  flex: 1;
-}
-.c{
-  flex: 1;
-}
-.d{
-  flex: 1;
-}
-.e{
-  flex: 1;
-}
+
 .second{
   justify-content:flex-end;
 }
@@ -36,4 +25,15 @@ body{
     flex-wrap: wrap;
     justify-content: space-around;
   }
+  .flex{
+    border: 0.1vw solid black;
+    background-color: rgb(24, 53, 107);
+    padding: 1vw;
+    width: 20vw;
+  }
+}
+.avatar{
+  width: 5vw;
+  border-radius: 1vw;
+  margin: 0.3vw;
 }
