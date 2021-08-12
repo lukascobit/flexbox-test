@@ -48,3 +48,11 @@ body{
 .nat{
   float: right;
 }
+.link{
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+}
+.age{
+  margin: 0;
+  padding: 0;
+}

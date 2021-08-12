@@ -39,8 +39,10 @@ function App() {
         srcImg = `https:picsum.photos/20${Math.round(Math.random()*10)}/30${Math.round(Math.random()*10)}`
         return(
           <div key={index} className={d.gender === "male" ? "flex" : "flex F"}>
-            <h1><img className="avatar" src={d.picture.thumbnail} alt="avatar" />{d.name.first} <img className="nat" src={`https://www.countryflags.io/${d.nat}/flat/64.png`} alt={d.nat} /> {d.name.last}</h1>
+            <h1><span className="age">{d.dob.age}</span><img className="avatar" src={d.picture.thumbnail} alt="avatar"/> {d.name.first} <img className="nat" src={`https://www.countryflags.io/${d.nat}/flat/64.png`} alt={d.nat} /> {d.name.last}</h1>
             <i>{d.email}</i>
+            <br />
+            <a className="link" href={`https://nominatim.openstreetmap.org/ui/reverse.html?lat=${d.location.coordinates.latitude}&lon=${d.location.coordinates.longitude}`}>get location</a>
             <p>{phrases[Math.round(Math.random()*phrases.length)]}</p>
             <img className="img" src={srcImg} alt="art" />
           </div>
